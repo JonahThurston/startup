@@ -1,1 +1,11 @@
 # Week One
+- git
+  - git add .
+  - git commit -m (message)
+  - git push
+  - git pull
+  - git clone
+  - git diff HEAD HEAD~1
+  - git fetch
+  - git status
+  - handle merges by editing the file and getting rid of merge delimiters and fixing whats left
