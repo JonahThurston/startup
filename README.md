@@ -1,4 +1,4 @@
 # Startup
 Jonah's startup web app for CS 260
 
-[notes pages](https://pages.github.com/)
+[Notes from class](https://github.com/JonahThurston/startup/blob/main/notes.md)
