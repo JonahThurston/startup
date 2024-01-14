@@ -7,7 +7,7 @@ Jonah's startup web app for CS 260
 
 ### Elevator pitch
 
-Do you have a significant other? Do they often struggle to decide what they want to watch on movie night? As a computer science major, I dont have that problem. Luckily for you, with all the time I save not trying to get a significant other to decide something, I am going to make this brilliant startup. This application will keep a database of the top 100 movies of all time and keep track of which ones you have already watched. And to make it even easier, the chat function will connect you with people all over the globe to ask for recomendations and movie reviews. 
+Do you have a significant other? Do they often struggle to decide what they want to watch on movie night? As a computer science major, I don't have that problem. Luckily for you, with all the time I save not trying to get a significant other to decide something, I am going to make this brilliant startup. This application will keep a database of the top 100 movies of all time and keep track of which ones you have already watched. And to make it even easier, the chat function will connect you with people all over the globe to ask for recomendations and movie reviews. 
 
 ### Design
 
