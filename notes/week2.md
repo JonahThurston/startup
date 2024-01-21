@@ -1,4 +1,5 @@
 IP Address: http://100.24.136.46/
+
 SSH CMD: ssh -i ~/Keys/startupKeys.pem ubuntu@100.24.136.46
 
 WEEK TWO
