@@ -1,6 +1,7 @@
 IP Address: http://100.24.136.46/
 
 SSH CMD: ssh -i ~/Keys/startupKeys.pem ubuntu@100.24.136.46
+ssh -i ~/Keys/startupKeys.pem ubuntu@wut2watch.click
 
 WEEK TWO
 - History of the internet
