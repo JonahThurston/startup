@@ -4,4 +4,4 @@
 
 [Week Two](https://github.com/JonahThurston/startup/blob/main/notes/week2.md)
 
-[Week Three](https://github.com/JonahThurston/startup/blob/main/notes/week3.md)
+[Week Three](https://github.com/JonahThurston/startup/blob/main/notes/Week3.md)
