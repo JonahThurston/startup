@@ -16,3 +16,17 @@
   border: solid thin rgb(100, 0, 100);
   background-color: black;
 }
+
+main {
+  display: flex;
+  flex-direction: row;
+}
+
+section:nth-child(1) {
+  flex: 1;
+  background-color: white;
+}
+section:nth-child(2) {
+  flex: 3;
+
+}
