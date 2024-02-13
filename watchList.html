@@ -9,6 +9,14 @@
 
     <link rel="stylesheet" href="main.css" />
     <link rel="stylesheet" href="watchList.css" />
+
+    <!-- Include bootstrap CSS framework -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi"
+      crossorigin="anonymous"
+    />
   </head>
   <body>
     <!-- Use header, main, and footer elements to give semantic structure -->
@@ -26,8 +34,6 @@
           <li><a href="chat.html">Chat</a></li>
         </menu>
       </nav>
-      <!-- Since we don't have the ability to style we use old style HTML to give some visual formatting -->
-      <hr />
     </header>
 
     <main>
@@ -36,43 +42,87 @@
         <span class="username">An O. Nymous</span>
       </div>
 
-      <div>
-        <label for="count">Movies Watched: </label>
-        <input type="number" id="count" value="0" readonly />
+      <div class="watchCounter">
+        Number Watched:
+        <div class="numWatched center">--</div>
+      </div>
+      
+
+      <br />
+      <br />
+
+      <div class="row row-cols-1 row-cols-md-5 g-4">
+        <div class="col">
+          <div class="card text-center">
+            <img src="PosterPlaceholder.jpg" class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title">Movie title</h5>
+              <button class="btn btn-primary">Move Watched!!!</button>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card text-center">
+            <img src="PosterPlaceholder.jpg" class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title">Movie title</h5>
+              <button class="btn btn-primary">Move Watched!!!</button>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card text-center">
+            <img src="PosterPlaceholder.jpg" class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title">Movie title</h5>
+              <button class="btn btn-primary">Move Watched!!!</button>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card text-center">
+            <img src="PosterPlaceholder.jpg" class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title">Movie title</h5>
+              <button class="btn btn-primary">Move Watched!!!</button>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card text-center">
+            <img src="PosterPlaceholder.jpg" class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title">Movie title</h5>
+              <button class="btn btn-primary">Move Watched!!!</button>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card text-center">
+            <img src="PosterPlaceholder.jpg" class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title">Movie title</h5>
+              <button class="btn btn-primary">Move Watched!!!</button>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card text-center">
+            <img src="PosterPlaceholder.jpg" class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title">Movie title</h5>
+              <button class="btn btn-primary">Move Watched!!!</button>
+            </div>
+          </div>
+        </div>
       </div>
 
       <br />
+      <br />
 
-      <div class = "pictureGrid">
-        <button type="button">
-          <img src="PosterPlaceholder.jpg" alt="PosterPlaceholder">
-        </button>
-
-        <button type="button">
-          <img src="PosterPlaceholder.jpg" alt="PosterPlaceholder" >
-        </button>
-
-        <button type="button">
-          <img src="PosterPlaceholder.jpg" alt="PosterPlaceholder" >
-        </button>
-
-        <button type="button">
-          <img src="PosterPlaceholder.jpg" alt="PosterPlaceholder" >
-        </button>
-
-        <button type="button">
-          <img src="PosterPlaceholder.jpg" alt="PosterPlaceholder" >
-        </button>
-
-        <button type="button">
-          <img src="PosterPlaceholder.jpg" alt="PosterPlaceholder" >
-        </button>
-
-      </div>
     </main>
 
     <footer>
-      <hr />
       <p>Jonah Thurston</p>
       <a href="https://github.com/JonahThurston/startup.git">Jonah's GitHub</a>
     </footer>

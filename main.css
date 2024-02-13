@@ -6,14 +6,17 @@ body {
   
 header {
  flex: 0 80px;
+ background-color: coral;
 }
   
 main {
   flex: 1 calc(100vh - 110px);
+  background-color: aqua;
 }
   
 footer {
   flex: 0 30px;
+  background-color: darkorange;
 }
   
 menu {

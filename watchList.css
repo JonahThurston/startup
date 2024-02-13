@@ -1,7 +1,18 @@
-.pictureGrid {
-    height: 100%;
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 400px));
-    grid-auto-rows: 200px;
-    grid-gap: 1em;
-  }
+.card-body {
+  background-color: pink;
+}
+
+.numWatched {
+  position: absolute;
+  text-align: center;
+  font-size: 20px;
+  font-family: monospace;
+  font-weight: bold;
+  color: plum;
+  cursor: default;
+  width: 50px;
+  height: 30px;
+  border-radius: 10px;
+  border: solid thin rgb(100, 0, 100);
+  background-color: black;
+}
