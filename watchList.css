@@ -24,7 +24,7 @@ main {
 
 section:nth-child(1) {
   flex: 1;
-  background-color: white;
+  background-color: chartreuse;
 }
 section:nth-child(2) {
   flex: 3;

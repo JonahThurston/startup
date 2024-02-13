@@ -17,6 +17,7 @@ main {
 footer {
   flex: 0 30px;
   background-color: darkorange;
+  padding: 1em;
 }
   
 .navbar {
