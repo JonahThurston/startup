@@ -39,3 +39,15 @@ I am going to use the required technologies in the following ways.
 - **DB/Login** - Store users, movies, and watch statuses in database. Register and login users. Credentials securely stored in database. Can't chat unless authenticated.
 - **WebSocket** - As each user sends chat messages, their messages are broadcast to all other users.
 - **React** - Application ported to use the React web framework.
+
+## HTML deliverable
+
+For this deliverable I built out the structure of my application using HTML.
+
+- **HTML pages** - three HTML page that represent the ability to login, see your movies, and chat.
+- **Links** - The login page automatically links to the movies page. All pages have a navigation menu at the top that links to all other pages.
+- **Text** - Text descriptions of most buttons and input fields as well as movie titles.
+- **Images** - Movies are represented by buttons with their movie poster inside of them. Just placeholders for now.
+- **DB/Login** - Input box and submit button for login. The number of movies watched represent data pulled from the database.
+- **WebSocket** - The live chat and notifications represent realtime interaction.
+- **API** - The list of movies and hopefully the movie posters will be pulled from 3rd party service calls.
