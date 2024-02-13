@@ -51,3 +51,18 @@ For this deliverable I built out the structure of my application using HTML.
 - **DB/Login** - Input box and submit button for login. The number of movies watched represent data pulled from the database.
 - **WebSocket** - The live chat and notifications represent realtime interaction.
 - **API** - The list of movies and hopefully the movie posters will be pulled from 3rd party service calls.
+
+Woah! Only two days left to finish up your CSS Startup deliverable. I've seen some awesome looking apps already. The Startup JavaScript is due on Feb 28th. Hopefully you are already starting to make progress on that. As we wrap up with modifying the DOM using JavaScript on Friday you should have a pretty clear idea of how to integrate JavaScript into your startup.
+One thing to note when you submit your deliverables is to be really clear in your README.md file about what you are submitting for credit. Create a section with the name of the deliverable and then copy the rubric with a clear indication of what you did and where the TA can find it. Here is a simple example that would work for the CSS deliverable.
+
+## CSS Deliverable 
+
+- done - Prerequisite: Simon CSS deployed to my production environment
+- done - Prerequisite: A link to my GitHub startup repository prominently displayed on your application's home page
+- done - Prerequisite: Notes in your startup Git repository README.md file
+- done - 30% Header, footer, and main content body. Used flex to layout sections. Added bootstrap buttons and nav elements
+- done - 20% Navigation elements. Made links look prettier using bootstrap navbar. 
+- done - 10% Responsive to window resizing. Used flex and bootstap grid to respond to window resize. header and footer disappear at small sizes.
+- done - 20% Application elements. Used bootstrap for buttons and movie cards.
+- done - 10% Application text content. Text is displayed using the Franklin Gothic Medium font
+- done - 10% Application images. Put images into bootstrap cards.
