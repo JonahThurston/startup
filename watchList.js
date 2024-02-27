@@ -39,7 +39,7 @@ class WatchList {
     btnDescriptions = [
         {watched: false}
     ];
-    numWatched;
+    numWatched = 0;
     
     constructor() {
         const playerNameEl = document.querySelector('.player-name');
@@ -54,6 +54,8 @@ class WatchList {
         });
 
         //TODO: initialize numWatched from local storage or to 0 if not
+        const scoreEl = document.querySelector('#score');
+        scoreEl.textContent = this.numWatched;
     }
 
     getPlayerName() {
@@ -62,6 +64,9 @@ class WatchList {
     
     async updateScore(scoreUpdate){
         return new Promise(async (scoreResolve) => {
+            this.numWatched = this.numWatched + scoreUpdate;
+            const scoreEl = document.querySelector('#score');
+            scoreEl.textContent = this.numWatched;
             //TODO; update score in database
             scoreResolve()
         });
