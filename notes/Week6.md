@@ -209,3 +209,77 @@ Const parentElement = document.querySelector……..
 Event handlers
 <button onclick = ‘alert(“clicked”)’>click me</button>
 .addEventListener
+\
+
+
+Javascript is single threaded
+Promises async await
+Everything must be asynchronous
+Example:
+demo{
+console.log(‘before timeout’)
+setTimeout(()=> {
+console.log(‘In Timeout’);
+}, 5000);
+console.log(After timeout);
+}
+demo();
+console.log(done)
+Promises
+Pending - currently running asynchronously
+Fulfilled - completed successfully
+Rejected - failed to complete
+new Promise((resolve, reject) => resolve(true)
+Example:
+Function callback(resolve, reject) {
+resolve(‘done’);
+}
+Const p = new Promise (callback);
+p.then((resolve_result) => console.log(resolve_result));
+To build a promise, pass it a function which takes two functions as parameters. The first is the resolve function, the second is the reject function
+Example:
+Let p = new Promise((resolve, reject) => {
+If (math.random() < 0.5) {
+resolve(‘sucess’)
+} else {
+reject(‘failure’);
+}
+});
+p.then(
+(resolve_result) => console.log(resove_result),
+(reject_result) => console.error(reject_result)
+);
+Then takes two functions, the first is what gets called after a success and the second is what gets called after a reject. Both take one param.
+Fun syntax
+Promise
+.then
+.then
+.catch
+.finally
+Lets us do fun things by returning promises
+async/await
+Syntax
+Try{
+Result = await p;
+console.log(‘rsult ${Result} ‘);
+} catch (err) {
+console.error(‘Error: ${err}’);
+} finally {
+console.log(‘Toss completed’);
+}
+Async function cow()
+Return promise
+Rules for using await
+Top level module function or
+Called from an async function
+(entire call stack has to be marked async to use async
+Debugging
+Console.log debugging
+Slow but better than nothing
+Source debugging
+Put breakpoint at last stable point
+Check all assumptions
+Find where assumptions were wrong
+Simon js
+Git clone github link
+
