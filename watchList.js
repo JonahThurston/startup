@@ -46,14 +46,20 @@ class WatchList {
         playerNameEl.textContent = this.getPlayerName();
 
         this.buttons = new Map();
-        //TODO: initialize btnDescriptions from local storage or to all false if not in storage.
+        btnDescText = localStorage.getItem('btnDesc');
+        if(btnDescText){
+            this.btnDescriptions = JSON.parse(btnDescText);
+        }
         document.querySelectorAll('.btn').forEach((el, i) => {
             if (i < this.btnDescriptions.length) {
               this.buttons.set(el.id, new Button(this.btnDescriptions[i], el));
             }
         });
 
-        //TODO: initialize numWatched from local storage or to 0 if not
+        const scoresText = localStorage.getItem('scores');
+        if (scoresText) {
+            this.numWatched = JSON.parse(scoresText);
+        }
         const scoreEl = document.querySelector('#score');
         scoreEl.textContent = this.numWatched;
     }
@@ -67,7 +73,10 @@ class WatchList {
             this.numWatched = this.numWatched + scoreUpdate;
             const scoreEl = document.querySelector('#score');
             scoreEl.textContent = this.numWatched;
-            //TODO; update score in database
+            
+            //TODO: im a bit confused but I think this is bad cuz scores will be independent of name
+            localStorage.setItem('scores', JSON.stringify(this.numWatched));
+
             scoreResolve()
         });
     }
