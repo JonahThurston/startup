@@ -66,3 +66,12 @@ One thing to note when you submit your deliverables is to be really clear in you
 - done - 20% Application elements. Used bootstrap for buttons and movie cards.
 - done - 10% Application text content. Text is displayed using the Franklin Gothic Medium font
 - done - 10% Application images. Put images into bootstrap cards.
+
+## JavaScript deliverable
+
+For this deliverable I implemented by JavaScript so that the application works for multiple users. I also added placeholders for future technology.
+
+- **login** - When you press the login button it takes you to the watch list page and stores your username and password in local storage.
+- **database** - Displayed the number of movies watched for each individual username. Also colors and changes text in movie buttons to reflect each movie's watch status. Currently this is stored and retrieved from local storage, but it will be replaced with the database data later.
+- **WebSocket** - I used the setInterval function to periodically send a random notification. This will be replaced with WebSocket messages later.
+- **application logic** - The number of movies watched and the color and text of the buttons change based up the user's selections.
