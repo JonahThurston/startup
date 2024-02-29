@@ -31,7 +31,7 @@ class WatchList {
 
         //initially paint buttons
         document.querySelectorAll('.btn').forEach((el) => {
-            this.paintElement(el)
+            this.setButtonDom(el)
         });
 
 
@@ -58,26 +58,16 @@ class WatchList {
         return this.watchTable[Number(buttonID)]
     }
 
-    paintElement(buttonEl){
+    setButtonDom(buttonEl){
         if(this.watched(buttonEl.id)){
             const background = `red`;
             buttonEl.style.backgroundColor = background;
+            buttonEl.innerText = "Movie Watched!!!";
         }
         else{
             const background = `blue`;
             buttonEl.style.backgroundColor = background;
-        }
-    }
-
-    paint(button) {
-        if(this.watched(button.id)){
-            const background = `red`;
-            button.el.style.backgroundColor = background;
-        }
-        else{
-            const background = `blue`;
-            let buttonEl = button.el;
-            buttonEl.style.backgroundColor = background;
+            buttonEl.innerText = "Mark watched";
         }
     }
 
@@ -92,7 +82,7 @@ class WatchList {
     async press(button) {
         return new Promise(async (pressResolve) => {
           this.watchTable[Number(button.id)] = !this.watchTable[Number(button.id)]
-          this.paintElement(button);
+          this.setButtonDom(button);
           await this.updateWatched();
           pressResolve();
         });
