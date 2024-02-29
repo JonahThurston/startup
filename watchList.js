@@ -16,7 +16,8 @@ class WatchList {
         playerNameEl.textContent = this.playerName;
 
         //get and set numWatched
-        const scoresText = localStorage.getItem('scores');
+        let scoresToGet = this.playerName.concat('Scores')
+        const scoresText = localStorage.getItem(scoresToGet);
         if (scoresText) {
             this.numWatched = JSON.parse(scoresText);
         }
@@ -24,7 +25,8 @@ class WatchList {
         scoreEl.textContent = this.numWatched;
 
         //get watchTable
-        const watchedText = localStorage.getItem('table');
+        let tableToGet = this.playerName.concat('Table')
+        const watchedText = localStorage.getItem(tableToGet);
         if (watchedText) {
             this.watchTable = JSON.parse(watchedText);
         }
@@ -47,8 +49,8 @@ class WatchList {
             const scoreEl = document.querySelector('#score');
             scoreEl.textContent = this.numWatched;
             
-            //TODO: im a bit confused but I think this is bad cuz scores will be independent of name
-            localStorage.setItem('scores', JSON.stringify(this.numWatched));
+            let scoresToSet = this.playerName.concat('Scores')
+            localStorage.setItem(scoresToSet, JSON.stringify(this.numWatched));
 
             scoreResolve()
         });
@@ -73,8 +75,8 @@ class WatchList {
 
     async updateWatched(){
         return new Promise(async (watchedResolve) => {
-            //TODO: im a bit confused but I think this is bad cuz scores will be independent of name
-            localStorage.setItem('table', JSON.stringify(this.watchTable));
+            let tableToSet = this.playerName.concat('Table')
+            localStorage.setItem(tableToSet, JSON.stringify(this.watchTable));
             watchedResolve()
         });
     }
