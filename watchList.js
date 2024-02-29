@@ -1,67 +1,40 @@
-class Button {
-    constructor(description, el) {
-        this.el = el;
-        this.watched = description.watched;
-        this.paint();
-    }
-
-    paint() {
-        if(this.watched){
-            const background = `red`;
-            this.el.style.backgroundColor = background;
-        }
-        else{
-            const background = `blue`;
-            this.el.style.backgroundColor = background;
-        }
-    }
-
-    async updateWatched(){
-        return new Promise(async (watchedResolve) => {
-            //TODO; update score in database
-            watchedResolve()
-        });
-    }
-
-    async press() {
-        return new Promise(async (pressResolve) => {
-          this.watched = !this.watched;
-          this.paint();
-          await this.updateWatched();
-          pressResolve();
-        });
-    }
-}
-
-
 class WatchList {
-    buttons;
-    btnDescriptions = [
-        {watched: false}
-    ];
+    playerName;
     numWatched = 0;
-    
+    watchTable = [
+        false, false, false, false , false, false, false, false, false, false,
+        false, false, false, false , false, false, false, false, false, false,
+        false, false, false, false , false, false, false, false, false, false,
+        false, false, false, false , false, false, false, false, false, false,
+        false, false, false, false , false, false, false, false, false, false,
+    ];
+
     constructor() {
+        //get and set player name
+        this.playerName = this.getPlayerName();
         const playerNameEl = document.querySelector('.player-name');
-        playerNameEl.textContent = this.getPlayerName();
+        playerNameEl.textContent = this.playerName;
 
-        this.buttons = new Map();
-        btnDescText = localStorage.getItem('btnDesc');
-        if(btnDescText){
-            this.btnDescriptions = JSON.parse(btnDescText);
-        }
-        document.querySelectorAll('.btn').forEach((el, i) => {
-            if (i < this.btnDescriptions.length) {
-              this.buttons.set(el.id, new Button(this.btnDescriptions[i], el));
-            }
-        });
-
+        //get and set numWatched
         const scoresText = localStorage.getItem('scores');
         if (scoresText) {
             this.numWatched = JSON.parse(scoresText);
         }
         const scoreEl = document.querySelector('#score');
         scoreEl.textContent = this.numWatched;
+
+        //get watchTable
+        const watchedText = localStorage.getItem('table');
+        if (watchedText) {
+            this.watchTable = JSON.parse(watchedText);
+        }
+
+        //initially paint buttons
+        document.querySelectorAll('.btn').forEach((el) => {
+            this.paintElement(el)
+        });
+
+
     }
 
     getPlayerName() {
@@ -81,11 +54,53 @@ class WatchList {
         });
     }
 
+    watched(buttonID){
+        return this.watchTable[Number(buttonID)]
+    }
+
+    paintElement(buttonEl){
+        if(this.watched(buttonEl.id)){
+            const background = `red`;
+            buttonEl.style.backgroundColor = background;
+        }
+        else{
+            const background = `blue`;
+            buttonEl.style.backgroundColor = background;
+        }
+    }
+
+    paint(button) {
+        if(this.watched(button.id)){
+            const background = `red`;
+            button.el.style.backgroundColor = background;
+        }
+        else{
+            const background = `blue`;
+            let buttonEl = button.el;
+            buttonEl.style.backgroundColor = background;
+        }
+    }
+
+    async updateWatched(){
+        return new Promise(async (watchedResolve) => {
+            //TODO: im a bit confused but I think this is bad cuz scores will be independent of name
+            localStorage.setItem('table', JSON.stringify(this.watchTable));
+            watchedResolve()
+        });
+    }
+
+    async press(button) {
+        return new Promise(async (pressResolve) => {
+          this.watchTable[Number(button.id)] = !this.watchTable[Number(button.id)]
+          this.paintElement(button);
+          await this.updateWatched();
+          pressResolve();
+        });
+    }
+
     async pressButton(button) {
-        let buttonID = button.id;
-        let buttonToPress = this.buttons.get(buttonID)
-        await buttonToPress.press();
-        if(buttonToPress.watched){
+        await this.press(button);
+        if(this.watched(button.id)){
             await this.updateScore(1)
         }
         else{
