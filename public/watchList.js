@@ -124,4 +124,4 @@ setInterval(() => {
         `<li class="notification">"` + contentString + `" - ` + authorString + `</li>` +
         notificationText.innerHTML;
     });
-}, 3000);
+}, 15000);
