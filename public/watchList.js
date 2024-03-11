@@ -110,3 +110,18 @@ setInterval(() => {
       `<li class="notification">Marcus just watched Lego Batman</li>` +
       notificationText.innerHTML;
 }, 5000);
+
+//output movie quotes every 15 seconds
+setInterval(() => {
+    fetch('https://api.quotable.io/random')
+    .then((response) => response.json())
+    .then((data) => {
+      contentString = data.content;
+      authorString = data.author;
+
+      const notificationText = document.querySelector('#notificationList');
+      notificationText.innerHTML =
+        `<li class="notification">"` + contentString + `" - ` + authorString + `</li>` +
+        notificationText.innerHTML;
+    });
+}, 3000);
