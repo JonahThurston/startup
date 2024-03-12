@@ -15,9 +15,14 @@ app.use(express.static('public'));
 var apiRouter = express.Router();
 app.use(`/api`, apiRouter);
 
-// GetScores
-apiRouter.get('/scores', (_req, res) => {
-  res.send(scores);
+// Get scores
+apiRouter.get('/getScore/:name', (_req, res) => {
+  let scoresToGet = `${this.playerName}Score`
+  if(serverStorage.has(scoresToGet)){
+    res.send(serverStorage.get(scoresToGet));
+  } else{
+    res.send({score: 0});
+  }
 });
 
 // set a table for username

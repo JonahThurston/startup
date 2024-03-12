@@ -15,14 +15,8 @@ class WatchList {
         const playerNameEl = document.querySelector('.player-name');
         playerNameEl.textContent = this.playerName;
 
-        //get and set numWatched
-        let scoresToGet = `${this.playerName}Score`
-        const scoresText = localStorage.getItem(scoresToGet);
-        if (scoresText) {
-            this.numWatched = JSON.parse(scoresText).score;
-        }
-        const scoreEl = document.querySelector('#score');
-        scoreEl.textContent = this.numWatched;
+        //get and numWatched
+        loadScores();
 
         //get watchTable
         let tableToGet = `${this.playerName}Table`
@@ -35,14 +29,37 @@ class WatchList {
         document.querySelectorAll('.btn').forEach((el) => {
             this.setButtonDom(el)
         });
-
-
     }
 
     getPlayerName() {
         return localStorage.getItem('userName') ?? 'Mystery player';
     }
     
+    async loadScores() {
+        let scoresToGet = `${this.playerName}Score`
+
+        try {
+          // Get the users score from the service
+          const response = await fetch(`/api/${this.playerName}`);
+          scoreObject = await response.json();
+      
+          // Save the score in case we go offline in the future
+          localStorage.setItem('score', JSON.stringify(scoreObject));
+
+          this.numWatched = scoreObject.score;
+        } catch {
+
+          // If there was an error then just use the last saved scores
+          const scoresText = localStorage.getItem(scoresToGet);
+          if (scoresText) {
+              this.numWatched = JSON.parse(scoresText).score;
+          }
+        } finally {
+            const scoreEl = document.querySelector('#score');
+            scoreEl.textContent = this.numWatched;
+        }
+    }
+
     async updateScore(scoreUpdate){
         return new Promise(async (scoreResolve) => {
             this.numWatched = this.numWatched + scoreUpdate;
