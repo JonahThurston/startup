@@ -19,11 +19,14 @@ apiRouter.get('/scores', (_req, res) => {
   res.send(scores);
 });
 
-// SubmitScore
-apiRouter.post('/score', (req, res) => {
-  scores = updateScores(req.body, scores);
-  res.send(scores);
+// set a table for username
+apiRouter.post('/setTable/:name', (req, res, next) => {
+    let name = req.params.name
+    let tableToSet = name.concat('Table')
+    serverStorage.set(tableToSet, req.body.json)
+    res.send(serverStorage.get(tableToSet));
 });
+
 
 // Return the application's default page if the path is unknown
 app.use((_req, res) => {
@@ -33,3 +36,5 @@ app.use((_req, res) => {
 app.listen(port, () => {
   console.log(`Listening on port ${port}`);
 });
+
+const serverStorage = new Map();

@@ -76,7 +76,24 @@ class WatchList {
     async updateWatched(){
         return new Promise(async (watchedResolve) => {
             let tableToSet = this.playerName.concat('Table')
-            localStorage.setItem(tableToSet, JSON.stringify(this.watchTable));
+            let url = `/api/setTable/` + this.playerName
+
+            try {
+                const response = await fetch(url, {
+                  method: 'POST',
+                  headers: {'content-type': 'application/json'},
+                  body: JSON.stringify(this.watchTable),
+                });
+          
+                // Store what the service gave us as the table
+                const table = await response.json();
+                localStorage.setItem(tableToSet, JSON.stringify(table));
+            } catch {
+              // If there was an error then just track locally
+              localStorage.setItem(tableToSet, JSON.stringify(this.watchTable));
+            }
+
+            
             watchedResolve()
         });
     }
