@@ -75,3 +75,13 @@ For this deliverable I implemented by JavaScript so that the application works f
 - **database** - Displayed the number of movies watched for each individual username. Also colors and changes text in movie buttons to reflect each movie's watch status. Currently this is stored and retrieved from local storage, but it will be replaced with the database data later.
 - **WebSocket** - I used the setInterval function to periodically send a random notification. This will be replaced with WebSocket messages later.
 - **application logic** - The number of movies watched and the color and text of the buttons change based up the user's selections.
+
+## Service deliverable
+
+For this deliverable I added backend endpoints that stores and returns scores and tables
+
+- **Node.js/Express HTTP service** - see index.js
+- **Static middleware for frontend** - see index.js
+- **Calls to third party endpoints** - every fifteen seconds, a notification with a random quote is sent out
+- **Backend service endpoints** - Placeholders for database use that stores the scores and tables on the server.
+- **Frontend calls service endpoints** - I did this using the fetch function.
