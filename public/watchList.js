@@ -9,45 +9,24 @@ class WatchList {
         false, false, false, false , false, false, false, false, false, false,
     ];
 
-    constructor() {
-        //get and set player name
-        this.playerName = this.getPlayerName();
-        const playerNameEl = document.querySelector('.player-name');
-        playerNameEl.textContent = this.playerName;
-
-        //get and numWatched
-        loadScores();
-
-        //get watchTable
-        let tableToGet = `${this.playerName}Table`
-        const watchedText = localStorage.getItem(tableToGet);
-        if (watchedText) {
-            this.watchTable = JSON.parse(watchedText);
-        }
-
-        //initially paint buttons
-        document.querySelectorAll('.btn').forEach((el) => {
-            this.setButtonDom(el)
-        });
-    }
-
-    getPlayerName() {
-        return localStorage.getItem('userName') ?? 'Mystery player';
-    }
-    
     async loadScores() {
         let scoresToGet = `${this.playerName}Score`
 
         try {
           // Get the users score from the service
-          const response = await fetch(`/api/${this.playerName}`);
-          scoreObject = await response.json();
+          const response = await fetch(`/api/getScore/${this.playerName}`);
+          let scoreObject = await response.json();
+
+          if (!response.ok) {
+            throw new Error(`Failed to fetch score: ${response.status} ${response.statusText}`);
+          }
       
           // Save the score in case we go offline in the future
-          localStorage.setItem('score', JSON.stringify(scoreObject));
+          localStorage.setItem(scoresToGet, JSON.stringify(scoreObject));
 
           this.numWatched = scoreObject.score;
-        } catch {
+        } catch (error) {
+          console.error('Error fetching score:', error);
 
           // If there was an error then just use the last saved scores
           const scoresText = localStorage.getItem(scoresToGet);
@@ -59,6 +38,58 @@ class WatchList {
             scoreEl.textContent = this.numWatched;
         }
     }
+
+    async loadTable() {
+        let tableToGet = `${this.playerName}Table`
+
+        try {
+          // Get the users table from the service
+          const response = await fetch(`/api/getTable/${this.playerName}`);
+          let tableObject = await response.json();
+
+          if (!response.ok) {
+            throw new Error(`Failed to fetch table: ${response.status} ${response.statusText}`);
+          }
+      
+          // Save the score in case we go offline in the future
+          localStorage.setItem(tableToGet, JSON.stringify(tableObject));
+
+          this.watchTable = tableObject;
+        } catch (error) {
+          console.error('Error fetching table:', error);
+
+          // If there was an error then just use the last saved table
+          let tableToGet = `${this.playerName}Table`
+          const watchedText = localStorage.getItem(tableToGet);
+          if (watchedText) {
+              this.watchTable = JSON.parse(watchedText);
+          }
+        } finally {
+            //initially paint buttons
+            document.querySelectorAll('.btn').forEach((el) => {
+                this.setButtonDom(el)
+            });
+        }
+    }
+
+    constructor() {
+        //get and set player name
+        this.playerName = this.getPlayerName();
+        const playerNameEl = document.querySelector('.player-name');
+        playerNameEl.textContent = this.playerName;
+
+        //get and set numWatched
+        this.loadScores();
+
+        //get and set watchTable
+        this.loadTable();
+    }
+
+    getPlayerName() {
+        return localStorage.getItem('userName') ?? 'Mystery player';
+    }
+    
+    
 
     async updateScore(scoreUpdate){
         return new Promise(async (scoreResolve) => {

@@ -15,13 +15,35 @@ app.use(express.static('public'));
 var apiRouter = express.Router();
 app.use(`/api`, apiRouter);
 
-// Get scores
-apiRouter.get('/getScore/:name', (_req, res) => {
-  let scoresToGet = `${this.playerName}Score`
+// Get score
+apiRouter.get('/getScore/:name', (req, res) => {
+  let scoresToGet = `${req.params.name}Score`
   if(serverStorage.has(scoresToGet)){
-    res.send(serverStorage.get(scoresToGet));
+    scoreObject = serverStorage.get(scoresToGet)
+    res.send(scoreObject);
   } else{
-    res.send({score: 0});
+    scoreObject = {score: 0};
+    serverStorage.set(scoresToGet, scoreObject)
+    res.send(scoreObject);
+  }
+});
+
+// Get table
+apiRouter.get('/getTable/:name', (req, res) => {
+  let tableToGet = `${req.params.name}Table`
+  if(serverStorage.has(tableToGet)){
+    tableObject = serverStorage.get(tableToGet)
+    res.send(tableObject);
+  } else{
+    tableObject = [
+      false, false, false, false , false, false, false, false, false, false,
+      false, false, false, false , false, false, false, false, false, false,
+      false, false, false, false , false, false, false, false, false, false,
+      false, false, false, false , false, false, false, false, false, false,
+      false, false, false, false , false, false, false, false, false, false,
+      ];
+    serverStorage.set(tableToGet, tableObject)
+    res.send(tableObject);
   }
 });
 
