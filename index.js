@@ -1,5 +1,6 @@
 const express = require('express');
 const app = express();
+const serverStorage = new Map();
 
 // The service port. In production the front-end code is statically hosted by the service on the same port.
 const port = process.argv.length > 2 ? process.argv[2] : 3000;
@@ -22,11 +23,18 @@ apiRouter.get('/scores', (_req, res) => {
 // set a table for username
 apiRouter.post('/setTable/:name', (req, res, next) => {
     let name = req.params.name
-    let tableToSet = name.concat('Table')
-    serverStorage.set(tableToSet, req.body.json)
+    let tableToSet = `${name}Table`
+    serverStorage.set(tableToSet, req.body)
     res.send(serverStorage.get(tableToSet));
 });
 
+// set a table for username
+apiRouter.post('/setScore/:name', (req, res, next) => {
+  let name = req.params.name
+  let tableToSet = `${name}Score`
+  serverStorage.set(tableToSet, req.body)
+  res.send(serverStorage.get(tableToSet));
+});
 
 // Return the application's default page if the path is unknown
 app.use((_req, res) => {
@@ -36,5 +44,3 @@ app.use((_req, res) => {
 app.listen(port, () => {
   console.log(`Listening on port ${port}`);
 });
-
-const serverStorage = new Map();

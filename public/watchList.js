@@ -16,7 +16,7 @@ class WatchList {
         playerNameEl.textContent = this.playerName;
 
         //get and set numWatched
-        let scoresToGet = this.playerName.concat('Scores')
+        let scoresToGet = `${this.playerName}Score`
         const scoresText = localStorage.getItem(scoresToGet);
         if (scoresText) {
             this.numWatched = JSON.parse(scoresText);
@@ -25,7 +25,7 @@ class WatchList {
         scoreEl.textContent = this.numWatched;
 
         //get watchTable
-        let tableToGet = this.playerName.concat('Table')
+        let tableToGet = `${this.playerName}Table`
         const watchedText = localStorage.getItem(tableToGet);
         if (watchedText) {
             this.watchTable = JSON.parse(watchedText);
@@ -49,7 +49,7 @@ class WatchList {
             const scoreEl = document.querySelector('#score');
             scoreEl.textContent = this.numWatched;
             
-            let scoresToSet = this.playerName.concat('Scores')
+            let scoresToSet = `${this.playerName}Score`
             localStorage.setItem(scoresToSet, JSON.stringify(this.numWatched));
 
             scoreResolve()
@@ -75,8 +75,8 @@ class WatchList {
 
     async updateWatched(){
         return new Promise(async (watchedResolve) => {
-            let tableToSet = this.playerName.concat('Table')
-            let url = `/api/setTable/` + this.playerName
+            let tableToSet = `${this.playerName}Table`;
+            let url = `/api/setTable/${this.playerName}`;
 
             try {
                 const response = await fetch(url, {
