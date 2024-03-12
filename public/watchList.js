@@ -48,9 +48,25 @@ class WatchList {
             this.numWatched = this.numWatched + scoreUpdate;
             const scoreEl = document.querySelector('#score');
             scoreEl.textContent = this.numWatched;
-            
-            let scoresToSet = `${this.playerName}Score`
-            localStorage.setItem(scoresToSet, JSON.stringify(this.numWatched));
+
+
+            let scoreToSet = `${this.playerName}Score`;
+            let url = `/api/setScore/${this.playerName}`;
+
+            try {
+                const response = await fetch(url, {
+                  method: 'POST',
+                  headers: {'content-type': 'application/json'},
+                  body: JSON.stringify(this.numWatched),
+                });
+          
+                // Store what the service gave us as the table
+                const table = await response.json();
+                localStorage.setItem(scoreToSet, JSON.stringify(table));
+            } catch {
+              // If there was an error then just track locally
+              localStorage.setItem(scoreToSet, JSON.stringify(this.numWatched));
+            }
 
             scoreResolve()
         });

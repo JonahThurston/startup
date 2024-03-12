@@ -31,9 +31,9 @@ apiRouter.post('/setTable/:name', (req, res, next) => {
 // set a table for username
 apiRouter.post('/setScore/:name', (req, res, next) => {
   let name = req.params.name
-  let tableToSet = `${name}Score`
-  serverStorage.set(tableToSet, req.body)
-  res.send(serverStorage.get(tableToSet));
+  let scoreToSet = `${name}Score`
+  serverStorage.set(scoreToSet, req.body)
+  res.send(serverStorage.get(scoreToSet));
 });
 
 // Return the application's default page if the path is unknown
