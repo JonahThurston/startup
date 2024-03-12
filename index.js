@@ -28,7 +28,7 @@ apiRouter.post('/setTable/:name', (req, res, next) => {
     res.send(serverStorage.get(tableToSet));
 });
 
-// set a table for username
+// set a score for username
 apiRouter.post('/setScore/:name', (req, res, next) => {
   let name = req.params.name
   let scoreToSet = `${name}Score`

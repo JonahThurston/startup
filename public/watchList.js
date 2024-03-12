@@ -19,7 +19,7 @@ class WatchList {
         let scoresToGet = `${this.playerName}Score`
         const scoresText = localStorage.getItem(scoresToGet);
         if (scoresText) {
-            this.numWatched = JSON.parse(scoresText);
+            this.numWatched = JSON.parse(scoresText).score;
         }
         const scoreEl = document.querySelector('#score');
         scoreEl.textContent = this.numWatched;
@@ -57,12 +57,12 @@ class WatchList {
                 const response = await fetch(url, {
                   method: 'POST',
                   headers: {'content-type': 'application/json'},
-                  body: JSON.stringify(this.numWatched),
+                  body: JSON.stringify({ score: this.numWatched }),
                 });
           
                 // Store what the service gave us as the table
-                const table = await response.json();
-                localStorage.setItem(scoreToSet, JSON.stringify(table));
+                const watched = await response.json();
+                localStorage.setItem(scoreToSet, JSON.stringify(watched));
             } catch {
               // If there was an error then just track locally
               localStorage.setItem(scoreToSet, JSON.stringify(this.numWatched));
