@@ -6,6 +6,8 @@ const DB = require('./database.js');
 
 const authCookieName = 'token';
 
+const serverStorage = new Map();
+
 // The service port. In production the front-end code is statically hosted by the service on the same port.
 const port = process.argv.length > 2 ? process.argv[2] : 4000;
 
@@ -87,13 +89,13 @@ secureApiRouter.use(async (req, res, next) => {
 
 // Get score
 secureApiRouter.get('/getScore/:name', async (req, res) => {
-  const scoreObject = await DB.getScore(req.params.name);
-  if(scoreObject){
+  let scoresToGet = `${req.params.name}Score`
+  if(serverStorage.has(scoresToGet)){
+    scoreObject = serverStorage.get(scoresToGet)
     res.send(scoreObject);
-  }
-  else{
+  } else{
     scoreObject = {score: 0};
-    //TODO: serverStorage.set(scoresToGet, scoreObject)
+    serverStorage.set(scoresToGet, scoreObject)
     res.send(scoreObject);
   }
 });
@@ -101,18 +103,18 @@ secureApiRouter.get('/getScore/:name', async (req, res) => {
 // set a score for username
 secureApiRouter.post('/setScore/:name', async (req, res, next) => {
   let name = req.params.name
-  const score = { ...req.body, name: name };
-  await DB.addScore(score, name);
-  res.send(score);
+  let scoreToSet = `${name}Score`
+  serverStorage.set(scoreToSet, req.body)
+  res.send(serverStorage.get(scoreToSet));
 });
 
 // Get table
 secureApiRouter.get('/getTable/:name', async (req, res) => {
-  const tableObject = await DB.getTable(req.params.name);
-  if(tableObject){
-    res.send(tableObject); 
-  }
-  else{
+  let tableToGet = `${req.params.name}Table`
+  if(serverStorage.has(tableToGet)){
+    tableObject = serverStorage.get(tableToGet)
+    res.send(tableObject);
+  } else{
     tableObject = [
       false, false, false, false , false, false, false, false, false, false,
       false, false, false, false , false, false, false, false, false, false,
@@ -120,7 +122,7 @@ secureApiRouter.get('/getTable/:name', async (req, res) => {
       false, false, false, false , false, false, false, false, false, false,
       false, false, false, false , false, false, false, false, false, false,
       ];
-    //TODO: serverStorage.set(tableToGet, tableObject)
+    serverStorage.set(tableToGet, tableObject)
     res.send(tableObject);
   }
 });
@@ -128,15 +130,9 @@ secureApiRouter.get('/getTable/:name', async (req, res) => {
 // set a table for username
 secureApiRouter.post('/setTable/:name', async (req, res, next) => {
   let name = req.params.name
-  const table = { ...req.body, name: name };
-  await DB.addTable(table, name);
-  res.send(score);
-  /*
-    let name = req.params.name
-    let tableToSet = `${name}Table`
-    serverStorage.set(tableToSet, req.body)
-    res.send(serverStorage.get(tableToSet));
-    */
+  let tableToSet = `${name}Table`
+  serverStorage.set(tableToSet, req.body)
+  res.send(serverStorage.get(tableToSet));
 });
 
 // Return the application's default page if the path is unknown
