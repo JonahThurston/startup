@@ -124,7 +124,7 @@ class WatchList {
             }
 
             // Let other players know movie has been watched
-            this.broadcastEvent(userName, movieWatchEvent, scoreToSet);
+            this.broadcastEvent(this.playerName, movieWatchEvent, this.numWatched);
 
             scoreResolve()
         });
@@ -211,7 +211,7 @@ class WatchList {
   displayMsg(cls, from, msg) {
     const notificationText = document.querySelector('#notificationList');
     notificationText.innerHTML =
-      `<div class="event"><span class="${cls}-event">${from}</span> ${msg}</div>` + chatText.innerHTML; +
+      `<div class="event"><span class="${cls}-event">${from}</span> ${msg}</div>` + notificationText.innerHTML; +
       notificationText.innerHTML;
   }
   broadcastEvent(from, type, value) {
