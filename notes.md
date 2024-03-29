@@ -15,3 +15,5 @@
 [Week Seven](https://github.com/JonahThurston/startup/blob/main/notes/Week7.md)
 
 [Week Eight](https://github.com/JonahThurston/startup/blob/main/notes/Week8.md)
+
+[Week Nine](https://github.com/JonahThurston/startup/blob/main/notes/Week9.md)

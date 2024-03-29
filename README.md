@@ -85,3 +85,15 @@ For this deliverable I added backend endpoints that stores and returns scores an
 - **Calls to third party endpoints** - every fifteen seconds, a notification with a random quote is sent out
 - **Backend service endpoints** - Placeholders for database use that stores the scores and tables on the server.
 - **Frontend calls service endpoints** - I did this using the fetch function.
+
+## DB/Login deliverable
+
+For this deliverable I associate emails with the logged in user. I stored the data in the database.
+
+- **MongoDB Atlas database created** - done!
+- **Stores data in MongoDB** - done!
+- **User registration** - Creates a new account in the database.
+- **existing user** - Stores the watch table under the same user if the user already exists.
+- **Use MongoDB to store credentials** - MongoDB stores user and their credentials
+- **Restricts functionality** - You have to log in to access the database. This was done using a secure API router
+
