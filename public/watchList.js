@@ -190,17 +190,41 @@ class WatchList {
             await this.updateScore(-1)
         } 
     }
+
+    // Functionality for peer communication using WebSocket
+  configureWebSocket() {
+    const protocol = window.location.protocol === 'http:' ? 'ws' : 'wss';
+    this.socket = new WebSocket(`${protocol}://${window.location.host}/ws`);
+    this.socket.onopen = (event) => {
+      this.displayMsg('system', 'game', 'connected');
+    };
+    this.socket.onclose = (event) => {
+      this.displayMsg('system', 'game', 'disconnected');
+    };
+    this.socket.onmessage = async (event) => {
+      const msg = JSON.parse(await event.data.text());
+      if (msg.type === movieWatchEvent) {
+        this.displayMsg('user', msg.from, `has watched ${msg.value.score} movies`);
+      }
+    };
+  }
+  displayMsg(cls, from, msg) {
+    const notificationText = document.querySelector('#notificationList');
+    notificationText.innerHTML =
+      `<div class="event"><span class="${cls}-event">${from}</span> ${msg}</div>` + chatText.innerHTML; +
+      notificationText.innerHTML;
+  }
+  broadcastEvent(from, type, value) {
+    const event = {
+      from: from,
+      type: type,
+      value: value,
+    };
+    this.socket.send(JSON.stringify(event));
+  }
 }
 
 const watchList = new WatchList();
-
-// Simulate chat messages that will come over WebSocket
-setInterval(() => {
-    const notificationText = document.querySelector('#notificationList');
-    notificationText.innerHTML =
-      `<li class="notification">Marcus just watched Lego Batman</li>` +
-      notificationText.innerHTML;
-}, 5000);
 
 //output movie quotes every 15 seconds
 setInterval(() => {
