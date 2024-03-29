@@ -1,3 +1,6 @@
+// Event messages
+const movieWatchEvent = 'movieWatch';
+
 class WatchList {
     playerName;
     numWatched = 0;
@@ -8,6 +11,7 @@ class WatchList {
         false, false, false, false , false, false, false, false, false, false,
         false, false, false, false , false, false, false, false, false, false,
     ];
+    socket;
 
     async loadScores() {
         let scoresToGet = `${this.playerName}Score`
@@ -83,6 +87,9 @@ class WatchList {
 
         //get and set watchTable
         this.loadTable();
+
+        //set socket
+        this.configureWebSocket();
     }
 
     getPlayerName() {
@@ -115,6 +122,9 @@ class WatchList {
               // If there was an error then just track locally
               localStorage.setItem(scoreToSet, JSON.stringify(this.numWatched));
             }
+
+            // Let other players know movie has been watched
+            this.broadcastEvent(userName, movieWatchEvent, scoreToSet);
 
             scoreResolve()
         });
