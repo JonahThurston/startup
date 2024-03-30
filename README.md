@@ -97,3 +97,11 @@ For this deliverable I associate emails with the logged in user. I stored the da
 - **Use MongoDB to store credentials** - MongoDB stores user and their credentials
 - **Restricts functionality** - You have to log in to access the database. This was done using a secure API router
 
+## WebSocket deliverable
+
+For this deliverable I used webSocket to display all users movie watches on the frontend in realtime.
+
+- **Backend listens for WebSocket connection** - done!
+- **Frontend makes WebSocket connection** - done!
+- **Data sent over WebSocket connection** - done!
+- **WebSocket data displayed** - All user watches display in realtime.
