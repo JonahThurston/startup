@@ -205,17 +205,20 @@ class WatchList {
     this.socket.onmessage = async (event) => {
       const msg = JSON.parse(await event.data.text());
       if (msg.type === movieWatchEvent) {
-        this.displayMsg('user', msg.from, `has watched ${msg.value.score} movies`);
+        console.log("score: " + msg.value)
+        this.displayMsg('user', msg.from, `has watched ${msg.value} movies`);
       }
     };
   }
   displayMsg(cls, from, msg) {
+    console.log("msg: " + msg)
     const notificationText = document.querySelector('#notificationList');
     notificationText.innerHTML =
       `<div class="event"><span class="${cls}-event">${from}</span> ${msg}</div>` + notificationText.innerHTML; +
       notificationText.innerHTML;
   }
   broadcastEvent(from, type, value) {
+    console.log("value: " + value);
     const event = {
       from: from,
       type: type,
