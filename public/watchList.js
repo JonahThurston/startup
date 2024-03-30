@@ -125,6 +125,7 @@ class WatchList {
 
             // Let other players know movie has been watched
             this.broadcastEvent(this.playerName, movieWatchEvent, this.numWatched);
+            console.log(this.numWatched);
 
             scoreResolve()
         });
