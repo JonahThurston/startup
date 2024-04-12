@@ -105,3 +105,12 @@ For this deliverable I used webSocket to display all users movie watches on the 
 - **Frontend makes WebSocket connection** - done!
 - **Data sent over WebSocket connection** - done!
 - **WebSocket data displayed** - All user watches display in realtime.
+
+## React deliverable
+
+For this deliverable I converted the login function of the application over to use React. I know it was supposed to be a full conversion, but I got mega super stuck trying to get the watchlist to work. And I dont have any more time to work on it. 
+
+- [x] **Bundled and transpiled** - done!
+- [x] **Components** - Login and watchlist are components. Only login has interesting functionality.
+- [x] **Router** - Routing between login and watchlist components.
+- [x] **Hooks** - Hooks were used in login
