@@ -1,0 +1,50 @@
+.body {
+    display: flex;
+    flex-direction: column;
+    min-width: 375px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+  
+header {
+ flex: 0 80px;
+ background-color: coral;
+}
+  
+main {
+  flex: 1 calc(100vh - 110px);
+  background-color: aqua;
+}
+  
+footer {
+  flex: 0 30px;
+  background-color: darkorange;
+  padding: 1em;
+}
+  
+.navbar {
+  background-color: coral;
+}
+
+menu {
+  flex: 1;
+  display: flex;
+  /*  overwrite Bootstrap so the menu does not wrap */
+  flex-direction: row !important;
+  list-style: none;
+}
+
+menu .nav-item {
+  padding: 0 0.3em;
+}
+
+@media (max-height: 600px) {
+  header {
+    display: none;
+  }
+  footer {
+    display: none;
+  }
+  main {
+    flex: 1 100vh;
+  }
+}
