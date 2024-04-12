@@ -1,20 +1,17 @@
 {
-  "name": "startup",
-  "version": "1.0.0",
-  "description": "Jonah's startup web app for CS 260",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+  "devDependencies": {
+    "vite": "^5.2.8"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
   "dependencies": {
-    "bcrypt": "^5.1.1",
-    "cookie-parser": "^1.4.6",
-    "express": "^4.19.1",
-    "mongodb": "^6.5.0",
-    "uuid": "^9.0.1",
-    "ws": "^8.16.0"
+    "bootstrap": "^5.3.3",
+    "react": "^18.2.0",
+    "react-bootstrap": "^2.10.2",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.22.3"
   }
 }
