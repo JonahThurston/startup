@@ -1,0 +1,75 @@
+- Which of the following is not true aabout a linux daemon
+    - Cannot fork other processes
+  - Starts when computer is rebooted
+  - Executes independent of user
+  - pm2 is an example of a daemon
+
+- Why is hashing stored passwords importaant
+    - it improves security or smth
+
+- HTTP status coedes in 300 rnge
+    - Content redirects or caching
+  - Server errors(500)
+  - Client errors(400)
+  - Success (200)
+
+- What does NPM install ws not do
+    - add template code for websockets to your js
+  - dds the websocket source code to the node_modules directory
+  - dds  dependency to your package.json file
+  - locks the version of the websocket package for your application
+
+- Port 80 is reserved for 
+  - ssh 22
+  - https 443
+    - http 80
+  - ftp
+
+- which is not a standard http header
+  - contenttype (HTML usully)
+  - host (tryna talk to who)
+    - languge
+  - cookie (all sorts of stuff)
+
+- given the foloowing code what will console log print
+    - clientserverhello
+  - chaining strings together across a client send to server than server sent to client
+
+- wHAT WILL COMPONENT a INITIALLY DISPLY
+  - use effect takes two arguments, a function and a variable to call that function when it displays
+
+- what component wil the url /burger render
+  - exact has to exactly match
+
+- Cookies allow
+    - server to store data on the client
+  - client to store data on the server
+  - for cache contol
+  - a client or server to store data the server
+
+
+- What is not a purpose of JSX
+  - To render HTML from JS
+  - to componetize your HTML
+  - to allow for composability of HTML
+      - To combine CSS HTML and JS
+
+- What document mathces this Mongo queery {$or: [{name:/J.*/}, {score: {$lt:3}}]}
+    - {nme:"Walke", score:-55}
+  - remember case sensitive, also and is the default
+
+- Which express middleware will match this fetch request
+  - cont r = await fetch('/fav/ringo', {
+    method: DELETE
+  - app.delet(/fav\/(.*)/, () => {})
+
+- for requests, app.use alwys goes. Next() goes next, 
+
+- you can fetch in front end nd back end code - true
+
+- what value does WebSocket add to HTTP
+  - it is peer to peer insted of client to server
+
+
+
+
